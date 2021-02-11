@@ -23,6 +23,8 @@ mongoose.connect(process.env.MONGO_URL, {
   useCreateIndex: true,
 });
 
+
+
 if (process.env.NODE_ENV !== "production") {
   const mongoDB = mongoose.connection;
 
@@ -66,9 +68,14 @@ app.use((error, req, res, next) => {
   handleError(error, res);
 });
 
-app.get("/dashboard", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
+
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
 
 app.listen(port, () => {
   console.log({ port });
