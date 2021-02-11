@@ -30,7 +30,7 @@ const ticketListStyles = makeStyles((theme) => ({
     position: "relative",
     height: "1300px",
     top: "200px",
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("xs")]: {
       height: "675px",
       width: "330px",
       left: "50%",
