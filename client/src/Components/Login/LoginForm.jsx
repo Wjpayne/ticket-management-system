@@ -77,7 +77,7 @@ export default function LandingPage() {
   const classes = landingPageStyles();
 
   //set state for form
-  const [email, setEmail] = useState("payne.j.will@gmail.com");
+  const [email, setEmail] = useState("user@user.com");
   const [password, setPassword] = useState("password");
   const { isLoading, isAuth, error } = useSelector((state) => state.login);
 
