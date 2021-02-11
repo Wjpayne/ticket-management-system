@@ -15,18 +15,18 @@ const AnimatedSwitch = withRouter(({location}) => (
   <Route exact path="/">
     <LandingPage />
   </Route>
-  <PrivateRoute path="/dashboard">
+  <Route path="/dashboard">
     <Dashboard />
-  </PrivateRoute>
-  <PrivateRoute path="/add-ticket">
+  </Route>
+  <Route path="/add-ticket">
     <AddTicket />
-  </PrivateRoute>
-  <PrivateRoute path="/ticket-list">
+  </Route>
+  <Route path="/ticket-list">
     <TicketList />
-  </PrivateRoute>
-  <PrivateRoute path="/ticket/:ID">
+  </Route>
+  <Route path="/ticket/:ID">
     <TicketPage />
-  </PrivateRoute>
+  </Route>
 </Switch>
 </CSSTransition>
 </TransitionGroup>
