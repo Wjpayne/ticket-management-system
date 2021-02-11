@@ -58,7 +58,7 @@ export const updateTicketStatusClosed = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
       const result = await axios.patch(
-        "/close-ticket" + _id,
+        "/ticket/close-ticket" + _id,
         {},
         {
           headers: {
@@ -79,7 +79,7 @@ export const createNewTicket = (frmData) => {
   console.log("from api", frmData);
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.post("/addticket", frmData, {
+      const result = await axios.post("/ticket/addticket", frmData, {
         headers: {
           Authorization: sessionStorage.getItem("accessJWT"),
         },
