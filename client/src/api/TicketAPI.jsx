@@ -58,7 +58,7 @@ export const updateTicketStatusClosed = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
       const result = await axios.patch(
-        "/ticket/close-ticket" + _id,
+        "/ticket/close-ticket/" + _id,
         {},
         {
           headers: {
