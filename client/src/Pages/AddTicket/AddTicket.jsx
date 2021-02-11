@@ -154,6 +154,7 @@ export const AddTicket = () => {
       ...formData,
       [name]: value,
     });
+    console.log(formData)
   };
 
   return (
