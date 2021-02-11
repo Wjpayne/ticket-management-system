@@ -18,7 +18,7 @@ import { useParams, Link } from "react-router-dom";
 import { MessageHistory } from "../../Components/MessageHistory/MessageHistory";
 import { Alert } from "@material-ui/lab";
 import { replyOnTicket, closeTicket, fetchSingleTicket } from "./TicketActions";
-import { resetResponseMsg } from "../TicketPage/TicketSlice";
+import { resetResponseMsg, resetErrorMsg } from "../TicketPage/TicketSlice";
 import CloseIcon from "@material-ui/icons/Close";
 
 const ticketPageStyles = makeStyles((theme) => ({
@@ -113,7 +113,7 @@ export const TicketPage = () => {
   const classes = ticketPageStyles();
   const { ID } = useParams();
   const dispatch = useDispatch();
-  const { error, selectedTicket, replyTicketError, replyMsg, resetErrorMsg } = useSelector(
+  const { error, selectedTicket, replyTicketError, replyMsg } = useSelector(
     (state) => state.tickets
   );
   const [message, setMessage] = useState("");
@@ -142,7 +142,7 @@ export const TicketPage = () => {
       (replyMsg || replyTicketError) && dispatch(resetResponseMsg());
       (error && dispatch(resetErrorMsg()))
     };
-  }, [ID, dispatch, message, replyTicketError, error, resetErrorMsg]);
+  }, [ID, dispatch, replyMsg, replyTicketError,]);
 
   return (
     <div>
