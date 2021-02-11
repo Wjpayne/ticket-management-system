@@ -1,0 +1,19 @@
+.message-history {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.message {
+  margin: 5px;
+  padding: 1rem;
+  width: 80%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+
+.message-name {
+    font-weight:bold;
+}
