@@ -12,6 +12,8 @@ import { useSelector } from 'react-redux';
 
 const ticketTableStyles = makeStyles(() => ({
   table: {
+
+    minWidth: "350px"
     
   },
 
