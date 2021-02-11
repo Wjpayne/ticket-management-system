@@ -116,11 +116,12 @@ export const TicketPage = () => {
   const { error, selectedTicket, replyTicketError, replyMsg, resetErrorMsg } = useSelector(
     (state) => state.tickets
   );
+  const [message, setMessage] = useState("");
 
   const {
     user: { name },
   } = useSelector((state) => state.user);
-  const [message, setMessage] = useState("");
+
 
   const handleChange = (e) => {
     setMessage(e.target.value);
@@ -138,7 +139,7 @@ export const TicketPage = () => {
   useEffect(() => {
     dispatch(fetchSingleTicket(ID));
     return () => {
-      (message || replyTicketError) && dispatch(resetResponseMsg());
+      (replyMsg || replyTicketError) && dispatch(resetResponseMsg());
       (error && dispatch(resetErrorMsg()))
     };
   }, [ID, dispatch, message, replyTicketError, error, resetErrorMsg]);

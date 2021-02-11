@@ -128,8 +128,8 @@ export const AddTicket = () => {
 
   useEffect(() => {
     return () => {
-      successMsg && dispatch(restSuccessMsg());
-      error && dispatch(restErrorMsg());
+      successMsg && dispatch(resetSuccessMsg());
+      error && dispatch(resetErrorMsg());
     };
   }, [dispatch, formData, formDataError, error, successMsg]);
 
@@ -178,7 +178,7 @@ export const AddTicket = () => {
                     color="inherit"
                     size="small"
                     onClick={() => {
-                      dispatch(restErrorMsg());
+                      dispatch(resetErrorMsg());
                     }}
                   >
                     <CloseIcon fontSize="inherit" />
@@ -197,7 +197,7 @@ export const AddTicket = () => {
                     color="inherit"
                     size="small"
                     onClick={() => {
-                      dispatch(restSuccessMsg());
+                      dispatch(resetSuccessMsg());
                     }}
                   >
                     <CloseIcon fontSize="inherit" />
