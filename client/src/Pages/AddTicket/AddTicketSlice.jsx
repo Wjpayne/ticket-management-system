@@ -36,7 +36,7 @@ export const {
   openNewTicketPending,
   openNewTicketSuccess,
   openNewTicketFail,
-  restSuccessMsg,
+  resetSuccessMsg,
   resetErrorMsg
 } = newTicketSlice.actions;
 export default newTicketSlice.reducer;
