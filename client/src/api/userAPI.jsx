@@ -6,7 +6,7 @@ import axios from "axios";
 export const userLogin = (frmData) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const res = await axios.post(/user/login, frmData);
+      const res = await axios.post("/user/login", frmData);
 
       resolve(res.data);
 
