@@ -10,7 +10,7 @@ import axios from "axios";
 export const userLogin = (frmData) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const res = await axios.post("login", frmData);
+      const res = await axios.post("/user/login", frmData);
 
       resolve(res.data);
 
@@ -34,7 +34,7 @@ export const fetchUser = () => {
       if (!accessJWT) {
         reject("Token not found");
       }
-      const res = await axios.get("/get", {
+      const res = await axios.get("/user/get", {
         headers: { Authorization: accessJWT },
       });
 
@@ -52,7 +52,7 @@ export const fetchNewAccessToken = () => {
       if (!refreshJWT) {
         reject("Token not found");
       }
-      const res = await axios.get("/token", {
+      const res = await axios.get("/user/token", {
         headers: { Authorization: refreshJWT },
       });
 
@@ -71,7 +71,7 @@ export const fetchNewAccessToken = () => {
 
 export const userLogOut = async () => {
   try {
-    await axios.delete("/logout", {
+    await axios.delete("/user/logout", {
       headers: { Authorization: sessionStorage.getItem("accessJWT") },
     });
   } catch (error) {

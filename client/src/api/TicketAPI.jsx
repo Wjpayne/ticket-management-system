@@ -7,7 +7,7 @@ import axios from "axios";
 export const getAllTickets = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.get("/", {
+      const result = await axios.get("/ticket", {
         headers: {
           Authorization: sessionStorage.getItem("accessJWT"),
         },
@@ -23,7 +23,7 @@ export const getAllTickets = () => {
 export const getSingleTicket = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.get("/" + _id, {
+      const result = await axios.get("/ticket/" + _id, {
         headers: {
           Authorization: sessionStorage.getItem("accessJWT"),
         },
@@ -40,7 +40,7 @@ export const getSingleTicket = (_id) => {
 export const updateReplyTicket = (_id, msgObj) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.put("/" + _id, msgObj, {
+      const result = await axios.put("/ticket/" + _id, msgObj, {
         headers: {
           Authorization: sessionStorage.getItem("accessJWT"),
         },
