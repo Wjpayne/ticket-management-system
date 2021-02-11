@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// const rootUrl = "http://localhost:5000";
+
 // const ticketUrl = rootUrl + "/ticket/";
 // const closeTicketUrl = rootUrl + "/ticket/close-ticket/";
 
