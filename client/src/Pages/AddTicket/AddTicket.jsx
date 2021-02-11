@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { openNewTicket } from "./AddTicketActions";
 import { shortText } from "../../utils/Validation";
-import { restSuccessMsg, restErrorMsg } from "./AddTicketSlice";
+import { resetSuccessMsg, resetErrorMsg } from "./AddTicketSlice";
 import { Alert } from "@material-ui/lab";
 import CloseIcon from "@material-ui/icons/Close";
 
