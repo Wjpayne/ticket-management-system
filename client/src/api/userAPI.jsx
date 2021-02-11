@@ -78,7 +78,7 @@ export const userLogOut = async () => {
 
 
 
-//LOCAL
+// LOCAL
 
 // const rootUrl = "http://localhost:5000/";
 
@@ -111,7 +111,7 @@ export const userLogOut = async () => {
 //       if (!accessJWT) {
 //         reject("Token not found");
 //       }
-//       const res = await axios.get(rootUrl + "/user/get", {
+//       const res = await axios.get(rootUrl + "user/get", {
 //         headers: { Authorization: accessJWT },
 //       });
 
@@ -129,7 +129,7 @@ export const userLogOut = async () => {
 //       if (!refreshJWT) {
 //         reject("Token not found");
 //       }
-//       const res = await axios.get(rootUrl + "/user/token", {
+//       const res = await axios.get(rootUrl + "user/token", {
 //         headers: { Authorization: refreshJWT },
 //       });
 
@@ -148,7 +148,7 @@ export const userLogOut = async () => {
 
 // export const userLogOut = async () => {
 //   try {
-//     await axios.delete(rootUrl + "/user/logout", {
+//     await axios.delete(rootUrl + "user/logout", {
 //       headers: { Authorization: sessionStorage.getItem("accessJWT") },
 //     });
 //   } catch (error) {

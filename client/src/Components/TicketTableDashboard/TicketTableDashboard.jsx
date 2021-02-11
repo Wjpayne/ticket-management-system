@@ -11,19 +11,22 @@ import { Link } from "react-router-dom"
 import { useSelector } from 'react-redux';
 
 const ticketTableStyles = makeStyles(() => ({
-    table: {
-      
-    },
-  
-    container: {
-      marginTop: "50px",
-      minWidth: "375px",
-    },
-  
-    head: {
-      fontSize: "20px",
-      fontWeight: "bold"
-    }
+  table: {
+
+    minWidth: "350px"
+    
+  },
+
+  container: {
+    marginTop: "50px",
+    
+  },
+
+  head: {
+    fontSize: "20px",
+    fontWeight: "bold"
+  },
+
   
   
   }));

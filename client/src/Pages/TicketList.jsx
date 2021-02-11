@@ -32,7 +32,7 @@ const ticketListStyles = makeStyles((theme) => ({
     top: "200px",
     [theme.breakpoints.down("xs")]: {
       height: "675px",
-      width: "330px",
+      width: "360px",
       left: "50%",
       transform: "translate(-50%)",
       top: "200px",
@@ -57,8 +57,11 @@ const ticketListStyles = makeStyles((theme) => ({
       color: "#585858",
     },
     borderRadius: "5px",
-    top: "-20px",
+    top: "40px",
     width: "700px",
+    [theme.breakpoints.down("xs")]: {
+     width: "300px"
+    },
   },
 
   table: {
@@ -80,9 +83,9 @@ export const TicketList = () => {
     dispatch(filterSearchTicket(value))
   }
   return (
-    <div>
+    <div >
        <Header />
-    <div className={classes.div} style={{ padding: 30 }}>
+    <div className={classes.div} >
      
       <Breadcrumbs className={classes.breadcrumb} aria-label="breadcrumb">
         <Link to="/dashboard" className={classes.link}>
@@ -91,18 +94,18 @@ export const TicketList = () => {
         <Typography className={classes.current}>Tickets</Typography>
       </Breadcrumbs>
       <Grid
-        spacing={8}
+        
         container
         direction="column"
         justify="center"
         alignItems="center"
       >
-        <Grid item>
+        <Grid  item>
           <Button component={Link} to="/add-ticket" className={classes.add}>
             Add New Ticket
           </Button>
         </Grid>
-        <Grid item>
+        <Grid xs = {12} item>
           <form>
             <TextField
               InputProps={{
@@ -117,7 +120,7 @@ export const TicketList = () => {
             ></TextField>
           </form>
           <Grid item>
-            <TicketTable className={classes.table} />
+            <TicketTable  />
           </Grid>
         </Grid>
       </Grid>

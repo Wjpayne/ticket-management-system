@@ -38,7 +38,7 @@ const ticketPageStyles = makeStyles((theme) => ({
     top: "200px",
     [theme.breakpoints.down("md")]: {
       height: "675px",
-      width: "350px",
+      
       left: "50%",
       transform: "translate(-50%)",
     },
@@ -60,6 +60,12 @@ const ticketPageStyles = makeStyles((theme) => ({
     outline: "none",
     overflow: "scroll",
     [theme.breakpoints.down("md")]: {
+      height: "675px",
+      width: "600px",
+      left: "50%",
+      top: "420px",
+    },
+    [theme.breakpoints.down("sm")]: {
       height: "675px",
       width: "350px",
       left: "50%",

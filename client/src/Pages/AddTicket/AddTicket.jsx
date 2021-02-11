@@ -35,6 +35,13 @@ const addTicketStyles = makeStyles((theme) => ({
     height: "500px",
     width: "500px",
     outline: "none",
+    [theme.breakpoints.down("sm")]: {
+      height: "675px",
+      width: "350px",
+      left: "50%",
+      top: "60%"
+     
+    },
   },
 
   title: {
@@ -47,6 +54,9 @@ const addTicketStyles = makeStyles((theme) => ({
     backgroundColor: "white",
     "& .Mui-focused": {
       color: "#585858",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "350px",
     },
   },
 
@@ -70,11 +80,17 @@ const addTicketStyles = makeStyles((theme) => ({
       color: "#585858",
     },
     height: "40px",
+    [theme.breakpoints.down("sm")]: {
+      width: "350px",
+    },
   },
   breadcrumb: {
     left: "30%",
     position: "relative",
     top: "25%",
+    [theme.breakpoints.down("sm")]: {
+      left: "5%"
+    },
   },
   link: {
     color: "#585858",
