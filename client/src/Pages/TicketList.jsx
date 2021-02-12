@@ -57,7 +57,7 @@ const ticketListStyles = makeStyles((theme) => ({
       color: "#585858",
     },
     borderRadius: "5px",
-    top: "40px",
+    top: "70px",
     width: "700px",
     [theme.breakpoints.down("xs")]: {
      width: "300px"
@@ -65,7 +65,7 @@ const ticketListStyles = makeStyles((theme) => ({
   },
 
   table: {
-    marginTop: "100px",
+    marginTop: "150px",
   },
 }));
 
@@ -119,7 +119,7 @@ export const TicketList = () => {
               onChange = {handleChange}
             ></TextField>
           </form>
-          <Grid item>
+          <Grid className = {classes.table} item>
             <TicketTable  />
           </Grid>
         </Grid>

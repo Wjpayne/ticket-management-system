@@ -60,20 +60,20 @@ const ticketPageStyles = makeStyles((theme) => ({
     outline: "none",
     overflow: "scroll",
     [theme.breakpoints.down("md")]: {
-      height: "675px",
+      height: "900px",
       width: "600px",
       left: "50%",
-      top: "420px",
+      top: "600px",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "675px",
+      height: "800px",
       width: "350px",
       left: "50%",
-      top: "420px",
+      top: "600px",
     },
   },
   text: {
-    marginBottom: "60px",
+    marginTop: "30px",
     display: "inline-flex",
     fontWeight: "bold",
   },
@@ -98,7 +98,7 @@ const ticketPageStyles = makeStyles((theme) => ({
   close: {
     float: "right",
     color: "#ffb347",
-    fontSize: "30px",
+    fontSize: "20px",
     marginTop: "20px",
     textTransform: "none",
     backgroundColor: "#585858",
@@ -142,7 +142,7 @@ export const TicketPage = () => {
       (replyMsg || replyTicketError) && dispatch(resetResponseMsg());
       (error && dispatch(resetErrorMsg()))
     };
-  }, [ID, dispatch, replyMsg, replyTicketError,]);
+  }, [ID, dispatch, replyMsg, replyTicketError, error]);
 
   return (
     <div>

@@ -36,11 +36,10 @@ const addTicketStyles = makeStyles((theme) => ({
     width: "500px",
     outline: "none",
     [theme.breakpoints.down("sm")]: {
-      height: "675px",
+      height: "500px",
       width: "350px",
       left: "50%",
-      top: "60%"
-     
+      top: "40%",
     },
   },
 
@@ -89,7 +88,8 @@ const addTicketStyles = makeStyles((theme) => ({
     position: "relative",
     top: "25%",
     [theme.breakpoints.down("sm")]: {
-      left: "5%"
+      left: "5%",
+      top: "15%",
     },
   },
   link: {
@@ -131,7 +131,7 @@ export const AddTicket = () => {
       successMsg && dispatch(resetSuccessMsg());
       error && dispatch(resetErrorMsg());
     };
-  }, [dispatch, formData, formDataError,]);
+  }, [dispatch, formData, formDataError, error, successMsg]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -154,7 +154,7 @@ export const AddTicket = () => {
       ...formData,
       [name]: value,
     });
-    console.log(formData)
+    console.log(formData);
   };
 
   return (

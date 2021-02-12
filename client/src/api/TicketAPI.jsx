@@ -169,11 +169,11 @@ export const createNewTicket = (frmData) => {
 //   });
 // };
 
-// export const createNewTicket = (frmData) => {
-//   console.log("from api", frmData);
+// export const createNewTicket = (formData) => {
+//   console.log("from api", formData);
 //   return new Promise(async (resolve, reject) => {
 //     try {
-//       const result = await axios.post(ticketUrl + "/addticket", frmData, {
+//       const result = await axios.post(ticketUrl + "/addticket", formData, {
 //         headers: {
 //           Authorization: sessionStorage.getItem("accessJWT"),
 //         },

@@ -22,7 +22,7 @@ router.all("/", (req, res, next) => {
 
 router.post("/addticket", createNewTicketValidation, auth, async (req, res) => {
   try {
-    const { subject, sender, message } = req.body;
+    const { subject, sender, message,} = req.body;
 
     const userId = req.userId;
 
@@ -33,6 +33,7 @@ router.post("/addticket", createNewTicketValidation, auth, async (req, res) => {
         {
           sender,
           message,
+          
         },
       ],
     };

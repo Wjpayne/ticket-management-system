@@ -4,7 +4,7 @@ import { AddTicket } from "./Pages/AddTicket/AddTicket";
 import { TicketList } from "./Pages/TicketList";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { TicketPage } from "./Pages/TicketPage/TicketPage";
-import { Switch, Route, withRouter, HashRouter } from "react-router-dom";
+import { Switch, Route, withRouter, BrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./Components/PrivateRoutes/PrivateRoute";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -39,10 +39,10 @@ function App() {
 
   return (
     <div className="App">
-      <HashRouter>
+      <BrowserRouter>
        <AnimatedSwitch />
 
-       </HashRouter>
+       </BrowserRouter>
     </div>
   );
 }
