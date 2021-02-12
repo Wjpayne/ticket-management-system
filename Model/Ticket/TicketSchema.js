@@ -14,7 +14,7 @@ const TicketSchema = new Schema({
     openAt: {
       type: Date,
       required: true,
-      default: Date.now(),
+      default: ""
     },
     status: {
       type: String,

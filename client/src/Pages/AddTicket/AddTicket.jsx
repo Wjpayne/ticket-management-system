@@ -131,7 +131,7 @@ export const AddTicket = () => {
       successMsg && dispatch(resetSuccessMsg());
       error && dispatch(resetErrorMsg());
     };
-  }, [dispatch, formData, formDataError, error, successMsg]);
+  }, [dispatch, formData, formDataError,]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -229,6 +229,7 @@ export const AddTicket = () => {
               InputProps={{
                 disableUnderline: true,
               }}
+              variant="filled"
               type="date"
               margin="normal"
               id="date"
