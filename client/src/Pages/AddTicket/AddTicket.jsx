@@ -229,7 +229,6 @@ export const AddTicket = () => {
               InputProps={{
                 disableUnderline: true,
               }}
-              variant="filled"
               type="date"
               margin="normal"
               id="date"
