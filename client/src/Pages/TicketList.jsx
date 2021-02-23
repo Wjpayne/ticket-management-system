@@ -64,9 +64,7 @@ const ticketListStyles = makeStyles((theme) => ({
     },
   },
 
-  table: {
-    marginTop: "150px",
-  },
+
 }));
 
 export const TicketList = () => {
