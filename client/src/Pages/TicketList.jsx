@@ -64,7 +64,9 @@ const ticketListStyles = makeStyles((theme) => ({
     },
   },
 
-
+  table: {
+    marginTop: "150px",
+  },
 }));
 
 export const TicketList = () => {
@@ -81,9 +83,9 @@ export const TicketList = () => {
     dispatch(filterSearchTicket(value))
   }
   return (
-    <div  >
+    <div className={classes.div}  >
        <Header />
-    <div className={classes.div} >
+    <div  >
      
       <Breadcrumbs className={classes.breadcrumb} aria-label="breadcrumb">
         <Link to="/dashboard" className={classes.link}>
