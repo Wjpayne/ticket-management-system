@@ -27,9 +27,8 @@ const ticketListStyles = makeStyles((theme) => ({
     color: "black",
   },
   div: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    position: "relative",
+    top: "200px",
     [theme.breakpoints.down("xs")]: {
       height: "675px",
       width: "360px",
@@ -83,9 +82,9 @@ export const TicketList = () => {
     dispatch(filterSearchTicket(value))
   }
   return (
-    <div className={classes.div}  >
+    <div >
        <Header />
-    <div  >
+    <div className={classes.div} >
      
       <Breadcrumbs className={classes.breadcrumb} aria-label="breadcrumb">
         <Link to="/dashboard" className={classes.link}>
