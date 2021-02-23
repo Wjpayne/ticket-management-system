@@ -15,12 +15,7 @@ import { useHistory } from "react-router-dom";
 import { getUserProfile } from "../../Pages/Dashboard/UserActions";
 
 const landingPageStyles = makeStyles((theme) => ({
-  div: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
 
-  },
 
   paper: {
     backgroundColor: "#585858",
