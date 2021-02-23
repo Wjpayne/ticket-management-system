@@ -27,9 +27,9 @@ const ticketListStyles = makeStyles((theme) => ({
     color: "black",
   },
   div: {
-    position: "relative",
-    height: "1300px",
-    top: "200px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     [theme.breakpoints.down("xs")]: {
       height: "675px",
       width: "360px",
@@ -83,7 +83,7 @@ export const TicketList = () => {
     dispatch(filterSearchTicket(value))
   }
   return (
-    <div >
+    <div  >
        <Header />
     <div className={classes.div} >
      

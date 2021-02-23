@@ -5,7 +5,6 @@ import { TicketList } from "./Pages/TicketList";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { TicketPage } from "./Pages/TicketPage/TicketPage";
 import { Switch, Route, withRouter, BrowserRouter } from "react-router-dom";
-import { PrivateRoute } from "./Components/PrivateRoutes/PrivateRoute";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const AnimatedSwitch = withRouter(({location}) => (
