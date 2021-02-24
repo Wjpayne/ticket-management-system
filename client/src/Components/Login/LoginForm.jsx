@@ -15,6 +15,8 @@ import { useHistory } from "react-router-dom";
 import { getUserProfile } from "../../Pages/Dashboard/UserActions";
 
 const landingPageStyles = makeStyles((theme) => ({
+
+  //make height 100vh
   div: {
     position: "relative",
     height: "100vh",
