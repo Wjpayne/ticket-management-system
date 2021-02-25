@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 require("dotenv").config();
@@ -10,7 +9,6 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 //API security
 app.use(helmet());
 //handle cors
-app.use(cors());
 //MONGO_DB setup
 const mongoose = require("mongoose");
 
