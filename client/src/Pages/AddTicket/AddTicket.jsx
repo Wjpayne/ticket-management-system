@@ -85,7 +85,7 @@ const addTicketStyles = makeStyles((theme) => ({
   },
   breadcrumb: {
     left: "30%",
-    position: "relative",
+    position: "absolute",
     top: "25%",
     [theme.breakpoints.down("sm")]: {
       left: "5%",
