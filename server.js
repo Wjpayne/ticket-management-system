@@ -50,6 +50,7 @@ app.use((req, res, next) => {
   error.status = 404;
   next(error);
 });
+app.use(express.json());
 
 app.use((error, req, res, next) => {
   handleError(error, res);
@@ -59,7 +60,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   
 }
-app.use(express.json());
+
 //load routers
 
 const userRouter = require("./Routes/UserRoute");
