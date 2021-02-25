@@ -32,6 +32,12 @@ const landingPageStyles = makeStyles((theme) => ({
     height: "500px",
     width: "500px",
     outline: "none",
+    [theme.breakpoints.down("sm")]: {
+      height: "350px",
+      width: "350px",
+      left: "50%",
+      top: "50%",
+    },
   },
 
   title: {

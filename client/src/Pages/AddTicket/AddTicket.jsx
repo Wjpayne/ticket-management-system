@@ -39,7 +39,7 @@ const addTicketStyles = makeStyles((theme) => ({
       height: "500px",
       width: "350px",
       left: "50%",
-      top: "40%",
+      top: "50%",
     },
   },
 
