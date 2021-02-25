@@ -133,7 +133,7 @@ export default function LandingPage() {
           {error && (
             <Alert severity="error">
               <AlertTitle style={{ textAlign: "left" }}>Error</AlertTitle>
-              Inavlid Credentials
+              Invalid Credentials
             </Alert>
           )}
           <TextField
