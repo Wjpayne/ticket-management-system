@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 require("dotenv").config();
@@ -9,6 +10,7 @@ app.use(express.static(path.join(__dirname, "client", "build")))
 //API security
 app.use(helmet());
 //handle cors
+app.use(cors());
 //MONGO_DB setup
 const mongoose = require("mongoose");
 
@@ -38,29 +40,7 @@ if (process.env.NODE_ENV !== "production") {
 app.use(morgan("combined"));
 }
 //set body parser
-
-
-
-
-//error handling
-const handleError = require("./utils/ErrorHandler");
-
-app.use((req, res, next) => {
-  const error = new Error("Nothing here!");
-  error.status = 404;
-  next(error);
-});
 app.use(express.json());
-
-app.use((error, req, res, next) => {
-  handleError(error, res);
-});
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  
-}
-
 //load routers
 
 const userRouter = require("./Routes/UserRoute");
@@ -72,6 +52,25 @@ const tokenRouter = require("./Routes/TokenRoute")
 app.use("/user", userRouter);
 app.use("/ticket", ticketRouter);
 app.use("/token", tokenRouter);
+
+
+
+//error handling
+const handleError = require("./utils/ErrorHandler");
+
+app.use((req, res, next) => {
+  const error = new Error("Nothing here!");
+  error.status = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  handleError(error, res);
+});
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
 
 app.get('/*', (request, response) => {
 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
