@@ -53,15 +53,6 @@ app.use("/user", userRouter);
 app.use("/ticket", ticketRouter);
 app.use("/token", tokenRouter);
 
-
-
-//error handling
-
-
-app.use((error, req, res, next) => {
-  handleError(error, res);
-});
-
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static('client/build'));
 }
@@ -69,6 +60,23 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/*', (request, response) => {
 	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
+
+
+//error handling
+const handleError = require("./utils/ErrorHandler");
+
+app.use((req, res, next) => {
+  const error = new Error("Nothing here!");
+  error.status = 404;
+  next(error);
+});
+
+app.use((error, req, res, next) => {
+  handleError(error, res);
+});
+
+
 
 
 app.listen(port, () => {
