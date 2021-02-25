@@ -56,13 +56,7 @@ app.use("/token", tokenRouter);
 
 
 //error handling
-const handleError = require("./utils/ErrorHandler");
 
-app.use((req, res, next) => {
-  const error = new Error("Nothing here!");
-  error.status = 404;
-  next(error);
-});
 
 app.use((error, req, res, next) => {
   handleError(error, res);
