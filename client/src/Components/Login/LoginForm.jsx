@@ -51,6 +51,10 @@ const landingPageStyles = makeStyles((theme) => ({
     "& .Mui-focused": {
       color: "#585858",
     },
+    [theme.breakpoints.down("sm")]: {
+     
+      width: "300px",
+    },
   },
 
   form: {
