@@ -120,7 +120,7 @@ export function Header() {
 
   // handle functions for state
 
-  //open Modals
+  //open Modals and close Modals
 
   const handleDrawerOpen = () => {
     drawerOpen(!open);
