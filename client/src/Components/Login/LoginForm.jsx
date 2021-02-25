@@ -17,7 +17,7 @@ import { getUserProfile } from "../../Pages/Dashboard/UserActions";
 const landingPageStyles = makeStyles((theme) => ({
   div: {
     position: "relative",
-    height: "100%",
+    height: "100vh",
   },
 
   paper: {
