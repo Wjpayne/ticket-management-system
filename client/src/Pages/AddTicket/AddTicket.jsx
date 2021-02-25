@@ -20,7 +20,7 @@ import CloseIcon from "@material-ui/icons/Close";
 const addTicketStyles = makeStyles((theme) => ({
   div: {
     position: "relative",
-    height: "1300px",
+    height: "100vh",
   },
 
   paper: {
