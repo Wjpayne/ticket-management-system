@@ -39,7 +39,7 @@ const ticketListStyles = makeStyles((theme) => ({
     height: "100vh",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     flexWrap: "wrap",
 
   },
