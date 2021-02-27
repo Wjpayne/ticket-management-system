@@ -15,9 +15,16 @@ import { fetchAllTickets, filterSearchTicket } from "./TicketPage/TicketActions"
 
 const ticketListStyles = makeStyles((theme) => ({
   breadcrumb: {
+
     left: "25%",
-    position: "relative",
+    top: "5px",
+    position: "absolute",
     width: "200px",
+    [theme.breakpoints.down("sm")]: {
+      left: "5%",
+      top: "-40px"
+      
+    },
   },
   link: {
     color: "#585858",
@@ -27,15 +34,14 @@ const ticketListStyles = makeStyles((theme) => ({
     color: "black",
   },
   div: {
+    marginTop: "200px",
     position: "relative",
-    top: "200px",
-    [theme.breakpoints.down("xs")]: {
-      height: "675px",
-      width: "360px",
-      left: "50%",
-      transform: "translate(-50%)",
-      top: "200px",
-    },
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+
   },
   add: {
     fontSize: "1.2rem",

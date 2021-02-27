@@ -20,7 +20,11 @@ import CloseIcon from "@material-ui/icons/Close";
 const addTicketStyles = makeStyles((theme) => ({
   div: {
     position: "relative",
-    height: "1000px",
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
   },
 
   paper: {
@@ -28,10 +32,6 @@ const addTicketStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     margin: "0",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     height: "500px",
     width: "500px",
     outline: "none",
@@ -84,12 +84,13 @@ const addTicketStyles = makeStyles((theme) => ({
     },
   },
   breadcrumb: {
-    left: "30%",
+    left: "25%",
+    top: "150px",
     position: "absolute",
-    top: "15%",
+    width: "200px",
     [theme.breakpoints.down("sm")]: {
       left: "5%",
-      top: "15%",
+      top: "10%",
     },
   },
   link: {

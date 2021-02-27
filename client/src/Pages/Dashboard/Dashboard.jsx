@@ -26,16 +26,21 @@ const dashboardStyles = makeStyles((theme) => ({
   },
   div: {
     position: "relative",
-    height: "1300px",
-    top: "200px",
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+   
     [theme.breakpoints.down("xs")]: {
-      height: "675px",
-      width: "360px",
-      left: "50%",
-      transform: "translate(-50%)",
-      top: "200px",
+
+
     },
   },
+
+  grid: {
+    margin: "100px"
+  }
 }));
 
 export const Dashboard = () => {
@@ -54,7 +59,7 @@ export const Dashboard = () => {
     <div>
       <Header />
       <div className={classes.div}>
-        <Grid container direction="column" justify="center" alignItems="center">
+        <Grid className = {classes.grid} container direction="column" justify="center" alignItems="center">
           <Grid item>
             <Button component={Link} to="/add-ticket" className={classes.add}>
               Add New Ticket

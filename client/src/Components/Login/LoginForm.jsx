@@ -18,6 +18,9 @@ const landingPageStyles = makeStyles((theme) => ({
   div: {
     position: "relative",
     height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   paper: {
@@ -25,18 +28,12 @@ const landingPageStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     margin: "0",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
     height: "500px",
     width: "500px",
     outline: "none",
     [theme.breakpoints.down("sm")]: {
       height: "350px",
       width: "350px",
-      left: "50%",
-      top: "50%",
     },
   },
 
@@ -52,10 +49,7 @@ const landingPageStyles = makeStyles((theme) => ({
       color: "#585858",
     },
     [theme.breakpoints.down("sm")]: {
-     
       width: "300px",
-      left: "50%",
-      top: "50%",
     },
   },
 
