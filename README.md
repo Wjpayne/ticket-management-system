@@ -8,9 +8,9 @@ A Complete Full Stack Application using the MERN stack. Client and server side u
 
 technologies used in this application
 
-#MongoDB
-#Express
-#React.JS
-#Node.JS
-#Redis
-#Joi
+# MongoDB
+# Express
+# React.JS
+# Node.JS
+# Redis
+# Joi
