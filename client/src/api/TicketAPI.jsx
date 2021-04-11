@@ -56,7 +56,7 @@ export const updateTicketStatusClosed = async (_id) => {
       }
     );
 
-    return result.data;
+    return result;
   } catch (error) {
     console.log(error.message);
   }
