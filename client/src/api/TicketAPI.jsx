@@ -1,5 +1,7 @@
 import axios from "axios";
 
+//ticket api routes
+
 export const getAllTickets = async () => {
   try {
     const result = await axios.get("/ticket", {
