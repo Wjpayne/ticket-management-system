@@ -24,7 +24,7 @@ export const getSingleTicket = async (_id) => {
       },
     });
 
-    return result.data;
+    return result;
   } catch (error) {
     console.log(error.message);
   }
@@ -56,7 +56,7 @@ export const updateTicketStatusClosed = async (_id) => {
       }
     );
 
-    return result;
+    return result.data;
   } catch (error) {
     console.log(error.message);
   }
