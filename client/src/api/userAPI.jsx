@@ -1,15 +1,9 @@
 import axios from "axios";
 
-
-
-
-export const userLogin = (frmData) => {
-  return new Promise(async (resolve, reject) => {
+  export const userLogin = async (formData) => {
     try {
-      const res = await axios.post("/user/login", frmData);
-
-      resolve(res.data);
-
+      const res = await axios.post("/user/login", formData);
+  
       if (res.data.status === "success") {
         sessionStorage.setItem("accessJWT", res.data.createToken);
         localStorage.setItem(
@@ -17,66 +11,60 @@ export const userLogin = (frmData) => {
           JSON.stringify({ refreshJWT: res.data.refreshToken })
         );
       }
+      return res.data;
     } catch (error) {
-      reject(error);
+      console.log(error);
     }
-  });
-};
-
-export const fetchUser = () => {
-  return new Promise(async (resolve, reject) => {
+  };
+  
+  export const fetchUser = async () => {
     try {
       const accessJWT = sessionStorage.getItem("accessJWT");
       if (!accessJWT) {
-        reject("Token not found");
+        return "Token not found";
       }
-      const res = await axios.get("/user/get", {
+      const res = await axios.get("user/get", {
         headers: { Authorization: accessJWT },
       });
-
-      resolve(res.data);
+  
+      return res.data;
     } catch (error) {
-      reject(error.message);
+      console.log(error.message);
     }
-  });
-};
-
-export const fetchNewAccessToken = () => {
-  return new Promise(async (resolve, reject) => {
+  };
+  
+  export const fetchNewAccessToken = async () => {
     try {
       const { refreshJWT } = JSON.parse(localStorage.getItem("crmSite"));
       if (!refreshJWT) {
-        reject("Token not found");
+        return "Token not found";
       }
       const res = await axios.get("/user/token", {
         headers: { Authorization: refreshJWT },
       });
-
+  
       if (res.data.status === "success") {
         sessionStorage.setItem("accessJWT", res.data.createToken);
       }
-
-      resolve(true);
+  
+      return true;
     } catch (error) {
       if (error.message === "Request failed with status code 403")
         localStorage.removeItem("crmSite");
-      reject(false);
+      return false;
     }
-  });
-};
-
-export const userLogOut = async () => {
-  try {
-    await axios.delete("/user/logout", {
-      headers: { Authorization: sessionStorage.getItem("accessJWT") },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
-
+  };
+  
+  export const userLogOut = async () => {
+    try {
+      await axios.delete("/user/logout", {
+        headers: { Authorization: sessionStorage.getItem("accessJWT") },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
 
 // LOCAL
 
@@ -84,66 +72,59 @@ export const userLogOut = async () => {
 
 // const loginUrl = rootUrl + "user/login";
 
-// export const userLogin = (frmData) => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       const res = await axios.post(loginUrl, frmData);
+// export const userLogin = async (formData) => {
+//   try {
+//     const res = await axios.post(loginUrl, formData);
 
-//       resolve(res.data);
-
-//       if (res.data.status === "success") {
-//         sessionStorage.setItem("accessJWT", res.data.createToken);
-//         localStorage.setItem(
-//           "crmSite",
-//           JSON.stringify({ refreshJWT: res.data.refreshToken })
-//         );
-//       }
-//     } catch (error) {
-//       reject(error);
+//     if (res.data.status === "success") {
+//       sessionStorage.setItem("accessJWT", res.data.createToken);
+//       localStorage.setItem(
+//         "crmSite",
+//         JSON.stringify({ refreshJWT: res.data.refreshToken })
+//       );
 //     }
-//   });
+//     return res.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
 // };
 
-// export const fetchUser = () => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       const accessJWT = sessionStorage.getItem("accessJWT");
-//       if (!accessJWT) {
-//         reject("Token not found");
-//       }
-//       const res = await axios.get(rootUrl + "user/get", {
-//         headers: { Authorization: accessJWT },
-//       });
-
-//       resolve(res.data);
-//     } catch (error) {
-//       reject(error.message);
+// export const fetchUser = async () => {
+//   try {
+//     const accessJWT = sessionStorage.getItem("accessJWT");
+//     if (!accessJWT) {
+//       return "Token not found";
 //     }
-//   });
+//     const res = await axios.get(rootUrl + "user/get", {
+//       headers: { Authorization: accessJWT },
+//     });
+
+//     return res.data;
+//   } catch (error) {
+//     console.log(error.message);
+//   }
 // };
 
-// export const fetchNewAccessToken = () => {
-//   return new Promise(async (resolve, reject) => {
-//     try {
-//       const { refreshJWT } = JSON.parse(localStorage.getItem("crmSite"));
-//       if (!refreshJWT) {
-//         reject("Token not found");
-//       }
-//       const res = await axios.get(rootUrl + "user/token", {
-//         headers: { Authorization: refreshJWT },
-//       });
-
-//       if (res.data.status === "success") {
-//         sessionStorage.setItem("accessJWT", res.data.createToken);
-//       }
-
-//       resolve(true);
-//     } catch (error) {
-//       if (error.message === "Request failed with status code 403")
-//         localStorage.removeItem("crmSite");
-//       reject(false);
+// export const fetchNewAccessToken = async () => {
+//   try {
+//     const { refreshJWT } = JSON.parse(localStorage.getItem("crmSite"));
+//     if (!refreshJWT) {
+//       return "Token not found";
 //     }
-//   });
+//     const res = await axios.get(rootUrl + "user/token", {
+//       headers: { Authorization: refreshJWT },
+//     });
+
+//     if (res.data.status === "success") {
+//       sessionStorage.setItem("accessJWT", res.data.createToken);
+//     }
+
+//     return true;
+//   } catch (error) {
+//     if (error.message === "Request failed with status code 403")
+//       localStorage.removeItem("crmSite");
+//     return false;
+//   }
 // };
 
 // export const userLogOut = async () => {

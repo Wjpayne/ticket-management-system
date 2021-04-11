@@ -75,7 +75,11 @@ export const TicketTableDashboard = () => {
                     </TableCell>
                     <TableCell align="right">{row.status}</TableCell>
                     <TableCell align="right">
-                      {row.openAt && new Date(row.openAt).toLocaleString()}
+                      {row.openAt && new Date(row.openAt).toLocaleString("en-us", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
                     </TableCell>
                   </TableRow>
                 ))

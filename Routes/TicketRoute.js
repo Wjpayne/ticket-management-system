@@ -22,18 +22,19 @@ router.all("/", (req, res, next) => {
 
 router.post("/addticket", createNewTicketValidation, auth, async (req, res) => {
   try {
-    const { subject, sender, message,} = req.body;
+    const { subject, sender, message, date } = req.body;
 
     const userId = req.userId;
 
     const ticket = {
       clientId: userId,
       subject,
+      openAt: date,
+
       conversations: [
         {
           sender,
           message,
-          
         },
       ],
     };
@@ -145,10 +146,12 @@ router.delete("/:_id", auth, async (req, res) => {
 
     const result = await deleteTicket({ _id, clientId });
 
-    return res.json({
-      status: "success",
-      message: "The ticket has been deleted",
-    });
+    if (result._id) {
+      return res.json({
+        status: "success",
+        message: "The ticket has been deleted",
+      });
+    }
   } catch (error) {
     res.json({ status: "error", message: error.message });
   }

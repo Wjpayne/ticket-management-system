@@ -77,7 +77,19 @@ const ticketListSlice = createSlice({
     resetErrorMsg: (state) => {
       state.isLoading = false;
       state.error = "";
-    }
+    },
+    deleteTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    deleteTicketSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = "";
+      state.replyMsg = payload;
+    },
+    deleteTicketFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 
@@ -98,7 +110,10 @@ export const {
   closeTicketFail,
   searchTickets,
   resetResponseMsg,
-  resetErrorMsg
+  resetErrorMsg,
+  deleteTicketFail,
+  deleteTicketLoading,
+  deleteTicketSuccess
 } = actions;
 
 export default reducer;

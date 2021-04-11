@@ -5,8 +5,7 @@ const insertTicket = (ticket) => {
     try {
       TicketSchema(ticket)
         .save()
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+        .then((data) => resolve(data));
     } catch (error) {
       reject(error);
     }
@@ -16,9 +15,7 @@ const insertTicket = (ticket) => {
 const getTickets = (clientId) => {
   return new Promise((resolve, reject) => {
     try {
-      TicketSchema.find({ clientId })
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+      TicketSchema.find({ clientId }).then((data) => resolve(data));
     } catch (error) {
       reject(error);
     }
@@ -28,9 +25,7 @@ const getTickets = (clientId) => {
 const getTicketById = (_id, clientId) => {
   return new Promise((resolve, reject) => {
     try {
-      TicketSchema.find({ _id, clientId })
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+      TicketSchema.find({ _id, clientId }).then((data) => resolve(data));
     } catch (error) {
       reject(error);
     }
@@ -51,9 +46,7 @@ const updateClientReply = ({ _id, message, sender }) => {
           },
         },
         { new: true }
-      )
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+      ).then((data) => resolve(data));
     } catch (error) {
       reject(error);
     }
@@ -69,9 +62,7 @@ const updateStatusClose = ({ _id, clientId }) => {
           status: "Closed",
         },
         { new: true }
-      )
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+      ).then((data) => resolve(data));
     } catch (error) {
       reject(error);
     }
@@ -81,9 +72,9 @@ const updateStatusClose = ({ _id, clientId }) => {
 const deleteTicket = ({ _id, clientId }) => {
   return new Promise((resolve, reject) => {
     try {
-      TicketSchema.findOneAndDelete({ _id, clientId })
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
+      TicketSchema.findOneAndDelete({ _id, clientId }).then((data) =>
+        resolve(data)
+      );
     } catch (error) {
       reject(error);
     }

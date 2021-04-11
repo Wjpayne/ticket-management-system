@@ -5,8 +5,8 @@ import {
 } from "./AddTicketSlice";
 import { createNewTicket } from "../../api/TicketAPI";
 
-export const openNewTicket = (formData) => (dispatch) => {
-  return new Promise(async (resolve, reject) => {
+export const openNewTicket =  (formData) => async (dispatch) => {
+  
     try {
       dispatch(openNewTicketPending());
 
@@ -17,8 +17,8 @@ export const openNewTicket = (formData) => (dispatch) => {
       }
       dispatch(openNewTicketSuccess(result.message));
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       dispatch(openNewTicketFail(error.message));
     }
-  });
+  
 };

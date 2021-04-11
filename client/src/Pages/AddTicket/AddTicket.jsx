@@ -19,12 +19,16 @@ import CloseIcon from "@material-ui/icons/Close";
 
 const addTicketStyles = makeStyles((theme) => ({
   div: {
-    position: "relative",
+   
     height: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
+    margin: "0 auto",
+    marginTop: "50px"
+    
+    
   },
 
   paper: {
@@ -84,9 +88,9 @@ const addTicketStyles = makeStyles((theme) => ({
     },
   },
   breadcrumb: {
-    left: "25%",
-    top: "150px",
-    position: "absolute",
+    left: "100px",
+    bottom: "310px",
+    position: "relative",
     width: "200px",
     [theme.breakpoints.down("sm")]: {
       left: "5%",
@@ -147,6 +151,11 @@ export const AddTicket = () => {
     });
 
     dispatch(openNewTicket({ ...formData, sender: name }));
+    setFormData({
+      subject: "",
+      date: "",
+      message: ""
+    })
   };
 
   const handleChange = (e) => {

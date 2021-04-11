@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 const ticketTableStyles = makeStyles(() => ({
   table: {
     minWidth: "350px",
@@ -28,7 +29,10 @@ const ticketTableStyles = makeStyles(() => ({
 export const TicketTable = () => {
   const classes = ticketTableStyles();
 
-  const { searchTicketList, error } = useSelector((state) => state.tickets);
+  
+
+  const { searchTicketList, error, } = useSelector((state) => state.tickets);
+
 
   if (error) return <h3>{error}</h3>;
 
@@ -66,7 +70,15 @@ export const TicketTable = () => {
                   </TableCell>
                   <TableCell align="right">{row.status}</TableCell>
                   <TableCell align="right">
-                    {row.openAt && new Date(row.openAt).toLocaleString()}
+                    {row.openAt &&
+                      new Date(row.openAt).toLocaleString("en-us", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                  </TableCell>
+                  <TableCell>
+
                   </TableCell>
                 </TableRow>
               ))
