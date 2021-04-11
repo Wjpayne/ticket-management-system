@@ -42,7 +42,7 @@ router.post("/login", async (req, res) => {
     return res.json({ status: "error", message: "Invalid credentials" });
   }
 
-  // check for user in database
+  // check for user in database by using email
   const user = await getUserByEmail(email);
   const passwordFromDB = user && user._id ? user.password : null;
 
