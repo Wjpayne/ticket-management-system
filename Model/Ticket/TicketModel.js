@@ -24,13 +24,9 @@ const getTickets = (clientId) => {
 
 const getTicketById = (_id, clientId) => {
   return new Promise((resolve, reject) => {
-    try {
-      TicketSchema.find({ _id, clientId })
-        .then((data) => resolve(data))
-        .catch((error) => reject(error));
-    } catch (error) {
-      reject(error);
-    }
+    TicketSchema.find({ _id, clientId })
+      .then((data) => resolve(data))
+      .catch((error) => reject(error));
   });
 };
 

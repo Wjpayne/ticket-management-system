@@ -136,8 +136,6 @@ export const TicketPage = () => {
     };
   }, [ID, dispatch, replyMsg, replyTicketError, error]);
 
-  
-
   return (
     <div>
       <Header />
@@ -165,8 +163,8 @@ export const TicketPage = () => {
             </Typography>
             <div className={classes.text}>
               Ticket Open:{" "}
-              {selectedTicket.date &&
-                new Date(selectedTicket.date).toLocaleString()}
+              {selectedTicket.openAt &&
+                new Date(selectedTicket.openAt).toLocaleString()}
             </div>
             <div className={classes.text}>Status: {selectedTicket.status} </div>
           </Grid>

@@ -1,3 +1,4 @@
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -77,19 +78,7 @@ const ticketListSlice = createSlice({
     resetErrorMsg: (state) => {
       state.isLoading = false;
       state.error = "";
-    },
-    deleteTicketLoading: (state) => {
-      state.isLoading = true;
-    },
-    deleteTicketSuccess: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = "";
-      state.replyMsg = payload;
-    },
-    deleteTicketFail: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = payload;
-    },
+    }
   },
 });
 
@@ -110,10 +99,7 @@ export const {
   closeTicketFail,
   searchTickets,
   resetResponseMsg,
-  resetErrorMsg,
-  deleteTicketFail,
-  deleteTicketLoading,
-  deleteTicketSuccess
+  resetErrorMsg
 } = actions;
 
 export default reducer;

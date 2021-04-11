@@ -12,7 +12,6 @@ import {
   closeTicketLoading,
   closeTicketSuccess,
   closeTicketFail,
-
 } from "./TicketSlice";
 
 import {
@@ -20,7 +19,6 @@ import {
   getSingleTicket,
   updateReplyTicket,
   updateTicketStatusClosed,
-
 } from "../../api/TicketAPI";
 
 export const fetchAllTickets = () => async (dispatch) => {
@@ -84,4 +82,3 @@ export const closeTicket = (_id) => async (dispatch) => {
     dispatch(closeTicketFail(error.message));
   }
 };
-

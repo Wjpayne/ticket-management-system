@@ -83,7 +83,7 @@ router.get("/:_id", auth, async (req, res) => {
 
     return res.json({
       status: "success",
-      result,
+      result
     });
   } catch (error) {
     res.json({ status: "error", message: error.message });
