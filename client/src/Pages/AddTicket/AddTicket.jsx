@@ -138,12 +138,12 @@ export const AddTicket = () => {
     };
   }, [dispatch, formData, formDataError, error, successMsg]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setFormDataError(initialFormError);
 
-    const isSubjectValid = shortText(formData.subject);
+    const isSubjectValid = await shortText(formData.subject);
 
     setFormDataError({
       ...initialFormError,
