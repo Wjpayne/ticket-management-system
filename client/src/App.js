@@ -34,11 +34,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
 ));
 
 function App() {
-  const { isAuth } = useSelector((state) => state.login);
 
-  useEffect(() => {
-    sessionStorage.getItem("accessJWT");
-  }, [isAuth]);
 
   return (
     <div className="App">
