@@ -109,7 +109,7 @@ export default function LandingPage() {
     sessionStorage.getItem("accessJWT") && history.push("/dashboard");
   }, [history, isAuth]);
 
-  const handleSubmit =  () => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
     if (!email || !password) {
       return alert("Please fill in the form");
