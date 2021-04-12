@@ -109,7 +109,7 @@ export default function LandingPage() {
     sessionStorage.getItem("accessJWT") && history.push("/dashboard");
   }, [history, isAuth]);
 
-  const handleSubmit =  (e) => {
+  const handleSubmit = async () => {
     e.preventDefault();
     if (!email || !password) {
       return alert("Please fill in the form");
@@ -118,7 +118,7 @@ export default function LandingPage() {
     dispatch(loginPending());
 
     try {
-      const isAuth =  userLogin({ email, password });
+      const isAuth = await userLogin({ email, password });
 
       if (isAuth.status === "error") {
         return dispatch(loginFail(isAuth.message));
