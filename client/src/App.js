@@ -6,6 +6,7 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { TicketPage } from "./Pages/TicketPage/TicketPage";
 import { Switch, Route, withRouter, BrowserRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { PrivateRoute } from './Components/PrivateRoutes/PrivateRoute';
 
 const AnimatedSwitch = withRouter(({location}) => (
   <TransitionGroup>
@@ -14,18 +15,18 @@ const AnimatedSwitch = withRouter(({location}) => (
   <Route exact path="/">
     <LandingPage />
   </Route>
-  <Route path="/dashboard">
+  <PrivateRoute path="/dashboard">
     <Dashboard />
-  </Route>
-  <Route path="/add-ticket">
+  </PrivateRoute>
+  <PrivateRoute path="/add-ticket">
     <AddTicket />
-  </Route>
-  <Route path="/ticket-list">
+  </PrivateRoute>
+  <PrivateRoute path="/ticket-list">
     <TicketList />
-  </Route>
-  <Route path="/ticket/:ID">
+  </PrivateRoute>
+  <PrivateRoute path="/ticket/:ID">
     <TicketPage />
-  </Route>
+  </PrivateRoute>
 </Switch>
 </CSSTransition>
 </TransitionGroup>
