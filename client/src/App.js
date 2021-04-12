@@ -6,43 +6,45 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { TicketPage } from "./Pages/TicketPage/TicketPage";
 import { Switch, Route, withRouter, BrowserRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { PrivateRoute } from './Components/PrivateRoutes/PrivateRoute';
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
-const AnimatedSwitch = withRouter(({location}) => (
+const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>
-    <CSSTransition key = {location.pathname} timeout = {700} classNames = "slide">
-  <Switch location = {location}>
-  <Route exact path="/">
-    <LandingPage />
-  </Route>
-  <PrivateRoute path="/dashboard">
-    <Dashboard />
-  </PrivateRoute>
-  <PrivateRoute path="/add-ticket">
-    <AddTicket />
-  </PrivateRoute>
-  <PrivateRoute path="/ticket-list">
-    <TicketList />
-  </PrivateRoute>
-  <PrivateRoute path="/ticket/:ID">
-    <TicketPage />
-  </PrivateRoute>
-</Switch>
-</CSSTransition>
-</TransitionGroup>
+    <CSSTransition key={location.pathname} timeout={700} classNames="slide">
+      <Switch location={location}>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/add-ticket">
+          <AddTicket />
+        </Route>
+        <Route path="/ticket-list">
+          <TicketList />
+        </Route>
+        <Route path="/ticket/:ID">
+          <TicketPage />
+        </Route>
+      </Switch>
+    </CSSTransition>
+  </TransitionGroup>
 ));
 
-
-
-
 function App() {
+  const { isAuth } = useSelector((state) => state.login);
+
+  useEffect(() => {
+    sessionStorage.getItem("accessJWT");
+  }, [isAuth]);
 
   return (
     <div className="App">
       <BrowserRouter>
-       <AnimatedSwitch />
-
-       </BrowserRouter>
+        <AnimatedSwitch />
+      </BrowserRouter>
     </div>
   );
 }
