@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
       const refreshToken = userProf.refreshJWT.token 
 
       tokenExpire = tokenExpire.setDate(
-        tokenExpire.getDate() + +process.env.JWT_REFRESH_EXPIRE
+        tokenExpire.getDate() + process.env.JWT_REFRESH_EXPIRE
       );
 
       const today = new Date();
