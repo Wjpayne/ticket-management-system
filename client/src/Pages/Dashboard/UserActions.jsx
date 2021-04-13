@@ -7,10 +7,13 @@ export const getUserProfile = () => async (dispatch) => {
 
     const result = await fetchUser()
 
+    console.log(result.user)
+
     if(result.user && result.user._id)
     return dispatch(getUserSuccess(result.user))
 
     dispatch(getUserFail("User Does Not Exists"))
+    
    
 
   } catch (error) {

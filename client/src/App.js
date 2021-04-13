@@ -6,8 +6,7 @@ import { Dashboard } from "./Pages/Dashboard/Dashboard";
 import { TicketPage } from "./Pages/TicketPage/TicketPage";
 import { Switch, Route, withRouter, BrowserRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 
 const AnimatedSwitch = withRouter(({ location }) => (
   <TransitionGroup>

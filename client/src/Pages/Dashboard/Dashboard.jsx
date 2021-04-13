@@ -11,10 +11,14 @@ const dashboardStyles = makeStyles((theme) => ({
     fontSize: "1.2rem",
     backgroundColor: "#585858",
     color: "#ffb347",
+    "&:hover": {
+      backgroundColor: "#585858",
+    },
   },
   text: {
     marginTop: "30px",
     fontSize: "20px",
+    color: "#fff",
   },
 
   link: {
@@ -31,16 +35,13 @@ const dashboardStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
-   
-    [theme.breakpoints.down("xs")]: {
 
-
-    },
+    [theme.breakpoints.down("xs")]: {},
   },
 
   grid: {
-    margin: "100px"
-  }
+    margin: "100px",
+  },
 }));
 
 export const Dashboard = () => {
@@ -59,7 +60,13 @@ export const Dashboard = () => {
     <div>
       <Header />
       <div className={classes.div}>
-        <Grid className = {classes.grid} container direction="column" justify="center" alignItems="center">
+        <Grid
+          className={classes.grid}
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
           <Grid item>
             <Button component={Link} to="/add-ticket" className={classes.add}>
               Add New Ticket
@@ -79,10 +86,10 @@ export const Dashboard = () => {
             <Typography className={classes.text}>
               Recently added tickets
             </Typography>
-        
-          <Grid item>
-            <TicketTableDashboard />
-          </Grid>
+
+            <Grid item>
+              <TicketTableDashboard />
+            </Grid>
           </Grid>
         </Grid>
       </div>

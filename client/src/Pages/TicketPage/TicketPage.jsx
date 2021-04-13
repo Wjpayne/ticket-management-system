@@ -9,7 +9,7 @@ import {
   FormControl,
   Button,
   TextField,
-  IconButton,
+  IconButton, createMuiTheme
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Header } from "../../Components/Layout/Header";
@@ -20,11 +20,13 @@ import { Alert } from "@material-ui/lab";
 import { replyOnTicket, closeTicket, fetchSingleTicket } from "./TicketActions";
 import { resetResponseMsg, resetErrorMsg } from "../TicketPage/TicketSlice";
 import CloseIcon from "@material-ui/icons/Close";
+import { ThemeProvider } from '@material-ui/styles';
+
 
 const ticketPageStyles = makeStyles((theme) => ({
 
   link: {
-    color: "#585858",
+    color: "white",
     cursor: "pointer",
   },
 
@@ -37,10 +39,10 @@ const ticketPageStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
   },
   current: {
-    color: "black",
+    color: "#949494",
   },
   paper: {
-    backgroundColor: "#fff",
+    backgroundColor: "#585858",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     margin: "200px",
@@ -61,10 +63,16 @@ const ticketPageStyles = makeStyles((theme) => ({
     marginTop: "30px",
     display: "inline-flex",
     fontWeight: "bold",
+    color: "white"
   },
 
   button: {
     marginTop: "20px",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+    color: "white",
+    fontSize:"20px"
   },
 
   form: {
@@ -76,8 +84,10 @@ const ticketPageStyles = makeStyles((theme) => ({
   },
 
   input: {
+    color: "black",
+    backgroundColor: "lightgray",
     "& .Mui-focused": {
-      color: "#585858",
+      color: "black",
     },
   },
 
@@ -88,6 +98,9 @@ const ticketPageStyles = makeStyles((theme) => ({
     marginTop: "20px",
     textTransform: "none",
     backgroundColor: "#585858",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
   },
   error: {
     margin: "15px",
@@ -100,6 +113,10 @@ const ticketPageStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "200px",
   },
+
+  formTitle: {
+    color: "white"
+  }, 
 }));
 
 export const TicketPage = () => {
@@ -119,10 +136,10 @@ export const TicketPage = () => {
     setMessage(e.target.value);
   };
 
-  const onSubmit = () => {
+  const onSubmit  = () => {
     const msgObj = {
       message,
-      sender: name,
+      sender: name
     };
     dispatch(replyOnTicket(ID, msgObj));
     setMessage("");
@@ -135,6 +152,15 @@ export const TicketPage = () => {
       error && dispatch(resetErrorMsg());
     };
   }, [ID, dispatch, replyMsg, replyTicketError, error]);
+
+  const theme = createMuiTheme({
+    palette: {
+      action: {
+       
+        disabled: 'white'
+      }
+    }
+  });
 
   return (
     <div>
@@ -149,6 +175,8 @@ export const TicketPage = () => {
         </Breadcrumbs>
 
         <Paper className={classes.paper}>
+        <ThemeProvider theme={theme}>
+
           <Button
             onClick={() => dispatch(closeTicket(ID))}
             className={classes.close}
@@ -156,6 +184,7 @@ export const TicketPage = () => {
           >
             Close Ticket
           </Button>
+          </ThemeProvider>
 
           <Grid container direction="column" alignItems="flex-start">
             <Typography className={classes.text}>
@@ -235,7 +264,7 @@ export const TicketPage = () => {
           <form className={classes.form}>
             <FormControl>
               <FormGroup>
-                <FormLabel component="legend">
+                <FormLabel className = {classes.formTitle}component="legend">
                   Please reply with a message here or update the ticket
                 </FormLabel>
                 <TextField

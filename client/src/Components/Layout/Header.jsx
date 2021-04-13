@@ -135,7 +135,6 @@ export function Header() {
   const logOut = () => {
     sessionStorage.removeItem("accessJWT")
     localStorage.removeItem("crmSite")
-    userLogOut()
     history.push("/")
   }
 

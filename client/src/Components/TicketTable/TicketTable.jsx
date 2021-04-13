@@ -14,16 +14,27 @@ import { useSelector } from "react-redux";
 const ticketTableStyles = makeStyles(() => ({
   table: {
     minWidth: "350px",
+    backgroundColor: "#585858",
+    borderBottom: "none"
   },
 
   container: {
     marginTop: "50px",
+    borderBottom: "none"
   },
 
   head: {
     fontSize: "20px",
     fontWeight: "bold",
+    borderColor: "grey",
+    color: "#ffb347"
   },
+
+  cells: {
+    borderColor: "grey",
+    color: "#fff"
+
+  }
 }));
 
 export const TicketTable = () => {
@@ -47,7 +58,7 @@ export const TicketTable = () => {
           <TableHead>
             <TableRow>
               <TableCell className={classes.head} align="right">
-                #{" "}
+                Ticket ID #
               </TableCell>
               <TableCell className={classes.head} align="right">
                 Subject
@@ -64,21 +75,18 @@ export const TicketTable = () => {
             {searchTicketList.length ? (
               searchTicketList.map((row) => (
                 <TableRow key={row._id}>
-                  <TableCell align="right">{row._id}</TableCell>
-                  <TableCell align="right">
-                    <Link to={`/ticket/${row._id}`}>{row.subject}</Link>
+                  <TableCell className={classes.cells} align="right">{row._id}</TableCell>
+                  <TableCell  className={classes.cells}align="right">
+                    <Link style = {{color: "#cde7f0"}} className={classes.cells} to={`/ticket/${row._id}`}>{row.subject}</Link>
                   </TableCell>
-                  <TableCell align="right">{row.status}</TableCell>
-                  <TableCell align="right">
+                  <TableCell className={classes.cells} align="right">{row.status}</TableCell>
+                  <TableCell className={classes.cells} align="right">
                     {row.openAt &&
                       new Date(row.openAt).toLocaleString("en-us", {
                         day: "numeric",
                         month: "short",
                         year: "numeric",
                       })}
-                  </TableCell>
-                  <TableCell>
-
                   </TableCell>
                 </TableRow>
               ))

@@ -7,39 +7,41 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { Link } from "react-router-dom"
-import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ticketTableStyles = makeStyles(() => ({
   table: {
-
-    minWidth: "350px"
-    
+    minWidth: "350px",
+    backgroundColor: "#585858",
+    borderBottom: "none"
   },
 
   container: {
     marginTop: "50px",
-    
+    borderBottom: "none"
   },
 
   head: {
     fontSize: "20px",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    borderColor: "grey",
+    color: "#ffb347"
   },
 
-  
-  
-  }));
+  cells: {
+    borderColor: "grey",
+    color: "#fff"
+
+  }
+}));
 
 export const TicketTableDashboard = () => {
+  const classes = ticketTableStyles();
 
-    const classes = ticketTableStyles();
+  const { searchTicketList, error } = useSelector((state) => state.tickets);
 
-    const { searchTicketList, error } = useSelector(
-      (state) => state.tickets
-    );
-    
-    if (error) return <h3>{error}</h3>;
+  if (error) return <h3>{error}</h3>;
   return (
     <div>
       <div>
@@ -52,7 +54,7 @@ export const TicketTableDashboard = () => {
             <TableHead>
               <TableRow>
                 <TableCell className={classes.head} align="right">
-                  #{" "}
+                  Ticket ID #{" "}
                 </TableCell>
                 <TableCell className={classes.head} align="right">
                   Subject
@@ -69,17 +71,18 @@ export const TicketTableDashboard = () => {
               {searchTicketList.length ? (
                 searchTicketList.slice(-10).map((row) => (
                   <TableRow key={row._id}>
-                    <TableCell align="right">{row._id}</TableCell>
-                    <TableCell align="right">
-                      <Link to={`/ticket/${row._id}`}>{row.subject}</Link>
+                    <TableCell className={classes.cells} align="right">{row._id}</TableCell>
+                    <TableCell className={classes.cells}  align="right">
+                      <Link style = {{color: "#cde7f0"}}to={`/ticket/${row._id}`}>{row.subject}</Link>
                     </TableCell>
-                    <TableCell align="right">{row.status}</TableCell>
-                    <TableCell align="right">
-                      {row.openAt && new Date(row.openAt).toLocaleString("en-us", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
+                    <TableCell className={classes.cells}  align="right">{row.status}</TableCell>
+                    <TableCell  className={classes.cells} align="right">
+                      {row.openAt &&
+                        new Date(row.openAt).toLocaleString("en-us", {
+                          day: "numeric",
+                          month: "short",
+                          year: "numeric",
+                        })}
                     </TableCell>
                   </TableRow>
                 ))

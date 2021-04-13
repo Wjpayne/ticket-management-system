@@ -78,7 +78,7 @@ const ticketListSlice = createSlice({
     resetErrorMsg: (state) => {
       state.isLoading = false;
       state.error = "";
-    }
+    },
   },
 });
 

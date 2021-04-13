@@ -82,3 +82,4 @@ export const closeTicket = (_id) => async (dispatch) => {
     dispatch(closeTicketFail(error.message));
   }
 };
+

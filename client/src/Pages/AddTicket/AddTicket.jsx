@@ -98,11 +98,11 @@ const addTicketStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    color: "#585858",
+    color: "white",
     cursor: "pointer",
   },
   current: {
-    color: "black",
+    color: "#949494",
   },
 }));
 

@@ -21,6 +21,7 @@ const ticketListStyles = makeStyles((theme) => ({
     top: "5px",
     position: "absolute",
     width: "200px",
+    color: "white",
     [theme.breakpoints.down("sm")]: {
       left: "5%",
       top: "-40px"
@@ -28,11 +29,11 @@ const ticketListStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    color: "#585858",
+    color: "white",
     cursor: "pointer",
   },
   current: {
-    color: "black",
+    color: "#949494",
   },
   div: {
     marginTop: "200px",
@@ -50,6 +51,9 @@ const ticketListStyles = makeStyles((theme) => ({
     color: "#ffb347",
     height: "57px",
     top: "20px",
+        "&:hover": {
+      backgroundColor: "#585858",
+    },
   },
 
   text: {

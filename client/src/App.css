@@ -3,8 +3,6 @@
   text-align: center;
 }
 
-
-
 .slide-enter,
 .slide-exit {
   transition: transform 700ms ease-out;
