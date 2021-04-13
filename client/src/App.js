@@ -1,5 +1,5 @@
 import "./App.css";
-import LandingPage from "./Pages/LandingPage";
+import  LoginForm  from "./Components/Login/LoginForm";
 import { AddTicket } from "./Pages/AddTicket/AddTicket";
 import { TicketList } from "./Pages/TicketList";
 import { Dashboard } from "./Pages/Dashboard/Dashboard";
@@ -13,7 +13,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
     <CSSTransition key={location.pathname} timeout={700} classNames="slide">
       <Switch location={location}>
         <Route exact path="/">
-          <LandingPage />
+          <LoginForm />
         </Route>
         <Route path="/dashboard">
           <Dashboard />

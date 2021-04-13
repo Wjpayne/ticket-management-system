@@ -156,7 +156,7 @@ export function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Button className={classes.title}>Ticket Management System</Button>
+          <Button component = {Link} to = "/dashboard" className={classes.title}>Ticket Management System</Button>
           <div className={classes.grow} />
         </Toolbar>
       </AppBar>
@@ -179,7 +179,7 @@ export function Header() {
             )}
           </IconButton>
         </div>
-        <Button className={classes.drawerTitle}>
+        <Button component = {Link} to =  "/dashboard" className={classes.drawerTitle}>
           Ticket Management System
         </Button>
         <Divider />
