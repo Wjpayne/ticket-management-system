@@ -26,7 +26,7 @@ const addTicketStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexWrap: "wrap",
     margin: "0 auto",
-    marginTop: "50px"
+    marginTop: "150px"
     
     
   },
