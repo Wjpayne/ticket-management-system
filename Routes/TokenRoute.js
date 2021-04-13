@@ -6,7 +6,7 @@ const { getUserByEmail } = require("../Model/User/UserModel");
 
 //return refresh token
 
-router.get("/", async (req, res, next) => {
+router.get("*", async (req, res, next) => {
   const { authorization } = req.headers;
   // make sure token is valid
   const decoded = await verifyRefreshJWT(authorization);
