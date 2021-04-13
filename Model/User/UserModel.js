@@ -21,7 +21,7 @@ const getUserByEmail = (email) => {
     try {
       UserSchema.findOne({ email }, (error, data) => {
         if (error) {
-          resolve(error);
+          reject(error);
         }
         resolve(data);
       });

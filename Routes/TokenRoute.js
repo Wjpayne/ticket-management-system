@@ -3,9 +3,10 @@ const router = express.Router();
 const { verifyRefreshJWT, refreshJWT } = require("../Helper/JWThelper");
 const { getUserByEmail } = require("../Model/User/UserModel");
 
+
 //return refresh token
 
-router.get("*", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   const { authorization } = req.headers;
   // make sure token is valid
   const decoded = await verifyRefreshJWT(authorization);
@@ -13,10 +14,17 @@ router.get("*", async (req, res, next) => {
     // check if jwt exists in database
     const userProf = await getUserByEmail(decoded.email);
     if (userProf._id) {
-      const refreshToken = userProf.refreshJWT.token;
+      let tokenExpire = userProf.refreshJWT.addedAt;
+      const refreshToken = userProf.refreshJWT.token 
 
-      if (refreshToken !== authorization) {
-        return res.status(403).json({ message: "Forbidden" });
+      tokenExpire = tokenExpire.setDate(
+        tokenExpire.getDate() + +process.env.JWT_REFRESH_EXPIRE
+      );
+
+      const today = new Date();
+
+      if ( refreshToken !== authorization && tokenExpire < today) {
+       return  res.status(403).json({ message: "Forbidden" });
       }
 
       const accessJWT = await refreshJWT(
@@ -24,7 +32,7 @@ router.get("*", async (req, res, next) => {
         userProf._id.toString()
       );
 
-      //delete token in redis database
+      //delete token in redis database   
 
       return res.json({ status: "success", accessJWT });
     }
