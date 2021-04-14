@@ -19,15 +19,11 @@ import CloseIcon from "@material-ui/icons/Close";
 
 const addTicketStyles = makeStyles((theme) => ({
   div: {
-   
     height: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexWrap: "wrap",
-    margin: "0 auto",
-    marginTop: "150px"
-    
     
   },
 
@@ -35,15 +31,14 @@ const addTicketStyles = makeStyles((theme) => ({
     backgroundColor: "#585858",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    margin: "0",
+    marginTop: "50px",
     height: "500px",
     width: "500px",
     outline: "none",
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("xs")]: {
       height: "500px",
       width: "350px",
-      left: "50%",
-      top: "50%",
+
     },
   },
 
@@ -88,12 +83,11 @@ const addTicketStyles = makeStyles((theme) => ({
     },
   },
   breadcrumb: {
-    left: "100px",
-    bottom: "310px",
+  
     position: "relative",
     width: "200px",
-    [theme.breakpoints.down("sm")]: {
-      left: "5%",
+    [theme.breakpoints.down("xs")]: {
+      left: "28%",
       top: "10%",
     },
   },
@@ -104,6 +98,11 @@ const addTicketStyles = makeStyles((theme) => ({
   current: {
     color: "#949494",
   },
+
+  container: {
+    margin: "6em"
+  }
+
 }));
 
 const initialData = {
@@ -154,8 +153,8 @@ export const AddTicket = () => {
     setFormData({
       subject: "",
       date: "",
-      message: ""
-    })
+      message: "",
+    });
   };
 
   const handleChange = (e) => {
@@ -170,6 +169,7 @@ export const AddTicket = () => {
     <div>
       <Header />
       <div className={classes.div}>
+        <div className = {classes.container}>
         <Breadcrumbs className={classes.breadcrumb} aria-label="breadcrumb">
           <Link to="/dashboard" className={classes.link}>
             Home
@@ -269,6 +269,7 @@ export const AddTicket = () => {
             Open Ticket
           </Button>
         </Paper>
+      </div>
       </div>
     </div>
   );
