@@ -5,29 +5,43 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllTickets } from "../TicketPage/TicketActions";
 import { TicketTableDashboard } from "../../Components/TicketTableDashboard/TicketTableDashboard";
+import { useContext } from "react";
+import DarkModeContext from "../../DarkModeContext/DarkModeContext";
 
 const dashboardStyles = makeStyles((theme) => ({
   add: {
+    fontSize: "1.2rem",
+    backgroundColor: "#FAF9F6",
+    color: "#FF926B",
+    "&:hover": {
+      backgroundColor: "#FAF9F6",
+    },
+    transition: " all 0.30s ease-in-out",
+  },
+
+  addDark: {
     fontSize: "1.2rem",
     backgroundColor: "#585858",
     color: "#ffb347",
     "&:hover": {
       backgroundColor: "#585858",
     },
+    transition: " all 0.30s ease-in-out",
   },
   text: {
     marginTop: "30px",
     fontSize: "20px",
-    color: "#fff",
+    color: "black",
+    transition: " all 0.30s ease-in-out",
   },
 
-  link: {
-    color: "#585858",
-    cursor: "pointer",
+  textDark: {
+    marginTop: "30px",
+    fontSize: "20px",
+    color: "#fff",
+    transition: " all 0.30s ease-in-out",
   },
-  current: {
-    color: "black",
-  },
+
   div: {
     position: "relative",
     height: "100vh",
@@ -46,6 +60,8 @@ const dashboardStyles = makeStyles((theme) => ({
 
 export const Dashboard = () => {
   const classes = dashboardStyles();
+
+  const { darkMode } = useContext(DarkModeContext)
 
   const dispatch = useDispatch();
   const { tickets } = useSelector((state) => state.tickets);
@@ -68,22 +84,22 @@ export const Dashboard = () => {
           alignItems="center"
         >
           <Grid item>
-            <Button component={Link} to="/add-ticket" className={classes.add}>
+            <Button component={Link} to="/add-ticket" className={!darkMode ? classes.add : classes.addDark}>
               Add New Ticket
             </Button>
           </Grid>
           <Grid item>
-            <Typography className={classes.text}>
+            <Typography className={!darkMode ? classes.text : classes.textDark}>
               Total tickets: {totalTickets}
             </Typography>
           </Grid>
           <Grid item>
-            <Typography className={classes.text}>
+            <Typography className={!darkMode ? classes.text : classes.textDark}>
               Pending Tickets: {pendingTickets.length}
             </Typography>
           </Grid>
           <Grid xs={12} item>
-            <Typography className={classes.text}>
+            <Typography className={!darkMode ? classes.text : classes.textDark}>
               Recently added tickets
             </Typography>
 

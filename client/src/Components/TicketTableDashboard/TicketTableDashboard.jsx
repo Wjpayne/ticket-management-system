@@ -9,9 +9,19 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import DarkModeContext from "../../DarkModeContext/DarkModeContext";
 
 const ticketTableStyles = makeStyles(() => ({
   table: {
+    transition: " all 0.30s ease-in-out",
+    minWidth: "350px",
+    backgroundColor: "#FAF9F6",
+    borderBottom: "none"
+  },
+
+  tableDark: {
+    transition: " all 0.30s ease-in-out",
     minWidth: "350px",
     backgroundColor: "#585858",
     borderBottom: "none"
@@ -23,6 +33,14 @@ const ticketTableStyles = makeStyles(() => ({
   },
 
   head: {
+    transition: " all 0.30s ease-in-out",
+    fontSize: "20px",
+    fontWeight: "bold",
+    borderColor: "grey",
+    color: "#FF926B"
+  },
+  headDark: {
+    transition: " all 0.30s ease-in-out",
     fontSize: "20px",
     fontWeight: "bold",
     borderColor: "grey",
@@ -30,6 +48,14 @@ const ticketTableStyles = makeStyles(() => ({
   },
 
   cells: {
+    transition: " all 0.30s ease-in-out",
+    borderColor: "grey",
+    color: "black"
+
+  },
+
+  cellsDark: {
+    transition: " all 0.30s ease-in-out",
     borderColor: "grey",
     color: "#fff"
 
@@ -41,28 +67,30 @@ export const TicketTableDashboard = () => {
 
   const { searchTicketList, error } = useSelector((state) => state.tickets);
 
+  const { darkMode} = useContext(DarkModeContext)
+
   if (error) return <h3>{error}</h3>;
   return (
     <div>
       <div>
         <TableContainer className={classes.container} component={Paper}>
           <Table
-            className={classes.table}
+            className={!darkMode ? classes.table : classes.tableDark}
             size="small"
             aria-label="a dense table"
           >
             <TableHead>
               <TableRow>
-                <TableCell className={classes.head} align="right">
+                <TableCell className={!darkMode ? classes.head : classes.headDark} align="right">
                   Ticket ID #{" "}
                 </TableCell>
-                <TableCell className={classes.head} align="right">
+                <TableCell className={!darkMode ? classes.head : classes.headDark} align="right">
                   Subject
                 </TableCell>
-                <TableCell className={classes.head} align="right">
+                <TableCell className={!darkMode ? classes.head : classes.headDark}align="right">
                   Status
                 </TableCell>
-                <TableCell className={classes.head} align="right">
+                <TableCell className={!darkMode ? classes.head : classes.headDark} align="right">
                   Date
                 </TableCell>
               </TableRow>
@@ -71,12 +99,12 @@ export const TicketTableDashboard = () => {
               {searchTicketList.length ? (
                 searchTicketList.slice(-10).map((row) => (
                   <TableRow key={row._id}>
-                    <TableCell className={classes.cells} align="right">{row._id}</TableCell>
-                    <TableCell className={classes.cells}  align="right">
-                      <Link style = {{color: "#cde7f0"}}to={`/ticket/${row._id}`}>{row.subject}</Link>
+                    <TableCell className={!darkMode ? classes.cells : classes.cellsDark} align="right">{row._id}</TableCell>
+                    <TableCell className={!darkMode ? classes.cells : classes.cellsDark} align="right">
+                      <Link style = {!darkMode ? {color: "blue"} : {color: "#cde7f0"}}to={`/ticket/${row._id}`}>{row.subject}</Link>
                     </TableCell>
-                    <TableCell className={classes.cells}  align="right">{row.status}</TableCell>
-                    <TableCell  className={classes.cells} align="right">
+                    <TableCell className={!darkMode ? classes.cells : classes.cellsDark} align="right">{row.status}</TableCell>
+                    <TableCell  className={!darkMode ? classes.cells : classes.cellsDark}align="right">
                       {row.openAt &&
                         new Date(row.openAt).toLocaleString("en-us", {
                           day: "numeric",

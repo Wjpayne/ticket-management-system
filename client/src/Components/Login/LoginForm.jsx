@@ -5,7 +5,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { loginPending, loginSuccess, loginFail } from "./LoginSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CircularProgress } from "@material-ui/core";
@@ -13,6 +13,7 @@ import { Alert, AlertTitle } from "@material-ui/lab";
 import { userLogin } from "../../api/userAPI";
 import { useHistory } from "react-router-dom";
 import { getUserProfile } from "../../Pages/Dashboard/UserActions";
+import DarkModeContext from "../../DarkModeContext/DarkModeContext";
 
 const landingPageStyles = makeStyles((theme) => ({
   div: {
@@ -24,6 +25,21 @@ const landingPageStyles = makeStyles((theme) => ({
   },
 
   paper: {
+    transition: " all 0.30s ease-in-out",
+    backgroundColor: "#FAF9F6",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    margin: "0",
+    height: "500px",
+    width: "500px",
+    outline: "none",
+    [theme.breakpoints.down("sm")]: {
+      height: "350px",
+      width: "350px",
+    },
+  },
+  paperDark: {
+    transition: " all 0.30s ease-in-out",
     backgroundColor: "#585858",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -38,6 +54,14 @@ const landingPageStyles = makeStyles((theme) => ({
   },
 
   title: {
+    transition: " all 0.30s ease-in-out",
+    fontSize: "30px",
+    marginTop: "20px",
+    color: "#FF926B",
+  },
+
+  titleDark: {
+    transition: " all 0.30s ease-in-out",
     fontSize: "30px",
     marginTop: "20px",
     color: "#ffb347",
@@ -58,6 +82,17 @@ const landingPageStyles = makeStyles((theme) => ({
   },
 
   button: {
+    transition: " all 0.30s ease-in-out",
+    color: "#FF926B",
+    width: "150px",
+    height: "50px",
+    fontSize: "30px",
+    marginTop: "20px",
+    textTransform: "none",
+  },
+
+  buttonDark: {
+    transition: " all 0.30s ease-in-out",
     color: "#ffb347",
     width: "150px",
     height: "50px",
@@ -65,6 +100,7 @@ const landingPageStyles = makeStyles((theme) => ({
     marginTop: "20px",
     textTransform: "none",
   },
+
 
   forget: {
     color: "white",
@@ -86,6 +122,7 @@ export default function LandingPage() {
   const [email, setEmail] = useState("user@user.com");
   const [password, setPassword] = useState("password");
   const { isLoading, isAuth, error } = useSelector((state) => state.login);
+  const { darkMode } = useContext(DarkModeContext);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -132,8 +169,8 @@ export default function LandingPage() {
   };
   return (
     <div className={classes.div}>
-      <Paper className={classes.paper}>
-        <Typography className={classes.title}>Client Login</Typography>
+      <Paper className={!darkMode ? classes.paper : classes.paperDark}>
+        <Typography className={!darkMode ? classes.title : classes.titleDark}>Client Login</Typography>
 
         <form className={classes.form}>
           {error && (
@@ -176,7 +213,7 @@ export default function LandingPage() {
           />
         </form>
 
-        <Button onClick={handleSubmit} className={classes.button}>
+        <Button onClick={handleSubmit} className={ !darkMode ? classes.button : classes.buttonDark}>
           Login
         </Button>
         {isLoading && <CircularProgress className={classes.spinner} />}
