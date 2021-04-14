@@ -39,7 +39,7 @@ const AnimatedSwitch = withRouter(({ location }) => (
 const useStyles = makeStyles(() => ({
   mainLight: {
     backgroundColor: "#DDDDDD",
-    transition: " all 0.30s ease-in-out"
+    transition: " all 0.30s ease-in-out",
   },
   mainDark: {
     backgroundColor: "#404040",

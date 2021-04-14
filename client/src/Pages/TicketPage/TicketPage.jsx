@@ -9,9 +9,10 @@ import {
   FormControl,
   Button,
   TextField,
-  IconButton, createMuiTheme
+  IconButton,
+  createMuiTheme,
 } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Header } from "../../Components/Layout/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
@@ -20,19 +21,23 @@ import { Alert } from "@material-ui/lab";
 import { replyOnTicket, closeTicket, fetchSingleTicket } from "./TicketActions";
 import { resetResponseMsg, resetErrorMsg } from "../TicketPage/TicketSlice";
 import CloseIcon from "@material-ui/icons/Close";
-import { ThemeProvider } from '@material-ui/styles';
-
+import { ThemeProvider } from "@material-ui/styles";
+import DarkModeContext from "../../DarkModeContext/DarkModeContext";
 
 const ticketPageStyles = makeStyles((theme) => ({
-
   link: {
+    color: "black",
+    cursor: "pointer",
+  },
+
+  linkDark: {
     color: "white",
     cursor: "pointer",
   },
 
   div: {
     position: "relative",
-    height: "100vh",
+    height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -42,6 +47,27 @@ const ticketPageStyles = makeStyles((theme) => ({
     color: "#949494",
   },
   paper: {
+    transition: " all 0.30s ease-in-out",
+    backgroundColor: "#FAF9F6",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    margin: "200px",
+    height: "1000px",
+    width: "1000px",
+    outline: "none",
+    overflow: "scroll",
+    [theme.breakpoints.down("md")]: {
+      height: "900px",
+      width: "600px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "800px",
+      minWidth: "350px",
+    },
+  },
+
+  paperDark: {
+    transition: " all 0.30s ease-in-out",
     backgroundColor: "#585858",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -60,19 +86,41 @@ const ticketPageStyles = makeStyles((theme) => ({
     },
   },
   text: {
+    transition: " all 0.30s ease-in-out",
     marginTop: "30px",
     display: "inline-flex",
     fontWeight: "bold",
-    color: "white"
+    color: "textDark",
+  },
+
+  textDark: {
+    transition: " all 0.30s ease-in-out",
+    marginTop: "30px",
+    display: "inline-flex",
+    fontWeight: "bold",
+    color: "white",
   },
 
   button: {
+    transition: " all 0.30s ease-in-out",
     marginTop: "20px",
+    backgroundColor: "#DDDDDD",
     "&:hover": {
-      backgroundColor: "transparent",
+      backgroundColor: "#DDDDDD",
     },
-    color: "white",
-    fontSize:"20px"
+    color: "#FF926B",
+    fontSize: "20px",
+  },
+
+  buttonDark: {
+    transition: " all 0.30s ease-in-out",
+    marginTop: "20px",
+    backgroundColor: "#404040",
+    "&:hover": {
+      backgroundColor: "#404040",
+    },
+    color: "#ffb347",
+    fontSize: "20px",
   },
 
   form: {
@@ -92,12 +140,26 @@ const ticketPageStyles = makeStyles((theme) => ({
   },
 
   close: {
+    transition: " all 0.30s ease-in-out",
+    float: "right",
+    color: "#FF926B",
+    fontSize: "20px",
+    marginTop: "20px",
+    textTransform: "none",
+    backgroundColor: "#DDDDDD",
+    "&:hover": {
+      backgroundColor: "#DDDDDD",
+    },
+  },
+
+  closeDark: {
+    transition: " all 0.30s ease-in-out",
     float: "right",
     color: "#ffb347",
     fontSize: "20px",
     marginTop: "20px",
     textTransform: "none",
-    backgroundColor: "#585858",
+    backgroundColor: "#404040",
     "&:hover": {
       backgroundColor: "transparent",
     },
@@ -115,8 +177,14 @@ const ticketPageStyles = makeStyles((theme) => ({
   },
 
   formTitle: {
-    color: "white"
-  }, 
+    color: "black",
+    transition: " all 0.30s ease-in-out",
+  },
+
+  formTitleDark: {
+    color: "white",
+    transition: " all 0.30s ease-in-out",
+  },
 }));
 
 export const TicketPage = () => {
@@ -128,6 +196,8 @@ export const TicketPage = () => {
   );
   const [message, setMessage] = useState("");
 
+  const { darkMode } = useContext(DarkModeContext);
+
   const {
     user: { name },
   } = useSelector((state) => state.user);
@@ -136,10 +206,10 @@ export const TicketPage = () => {
     setMessage(e.target.value);
   };
 
-  const onSubmit  = () => {
+  const onSubmit = () => {
     const msgObj = {
       message,
-      sender: name
+      sender: name,
     };
     dispatch(replyOnTicket(ID, msgObj));
     setMessage("");
@@ -156,10 +226,9 @@ export const TicketPage = () => {
   const theme = createMuiTheme({
     palette: {
       action: {
-       
-        disabled: 'white'
-      }
-    }
+        disabled: "white",
+      },
+    },
   });
 
   return (
@@ -168,34 +237,38 @@ export const TicketPage = () => {
 
       <div className={classes.div}>
         <Breadcrumbs className={classes.breadcrumb} aria-label="breadcrumb">
-          <Link to="/dashboard" className={classes.link}>
+          <Link
+            to="/dashboard"
+            className={!darkMode ? classes.link : classes.linkDark}
+          >
             Home
           </Link>
           <Typography className={classes.current}>Ticket</Typography>
         </Breadcrumbs>
 
-        <Paper className={classes.paper}>
-        <ThemeProvider theme={theme}>
-
-          <Button
-            onClick={() => dispatch(closeTicket(ID))}
-            className={classes.close}
-            disabled={selectedTicket.status === "Closed"}
-          >
-            Close Ticket
-          </Button>
+        <Paper className={!darkMode ? classes.paper : classes.paperDark}>
+          <ThemeProvider theme={theme}>
+            <Button
+              onClick={() => dispatch(closeTicket(ID))}
+              className={!darkMode ? classes.close : classes.closeDark}
+              disabled={selectedTicket.status === "Closed"}
+            >
+              Close Ticket
+            </Button>
           </ThemeProvider>
 
           <Grid container direction="column" alignItems="flex-start">
-            <Typography className={classes.text}>
+            <Typography className={!darkMode ? classes.text : classes.textDark}>
               Subject: {selectedTicket.subject}
             </Typography>
-            <div className={classes.text}>
+            <div className={!darkMode ? classes.text : classes.textDark}>
               Ticket Open:{" "}
               {selectedTicket.openAt &&
                 new Date(selectedTicket.openAt).toLocaleString()}
             </div>
-            <div className={classes.text}>Status: {selectedTicket.status} </div>
+            <div className={!darkMode ? classes.text : classes.textDark}>
+              Status: {selectedTicket.status}{" "}
+            </div>
           </Grid>
           <div>
             {error && (
@@ -264,8 +337,13 @@ export const TicketPage = () => {
           <form className={classes.form}>
             <FormControl>
               <FormGroup>
-                <FormLabel className = {classes.formTitle}component="legend">
-                  Please reply with a message here or update the ticket
+                <FormLabel
+                  className={
+                    !darkMode ? classes.formTitle : classes.formTitleDark
+                  }
+                  component="legend"
+                >
+                  Please reply with a message to update the ticket
                 </FormLabel>
                 <TextField
                   InputProps={{
@@ -281,7 +359,10 @@ export const TicketPage = () => {
                   onChange={handleChange}
                   className={classes.input}
                 ></TextField>
-                <Button onClick={onSubmit} className={classes.button}>
+                <Button
+                  onClick={onSubmit}
+                  className={!darkMode ? classes.button : classes.buttonDark}
+                >
                   Reply
                 </Button>
               </FormGroup>

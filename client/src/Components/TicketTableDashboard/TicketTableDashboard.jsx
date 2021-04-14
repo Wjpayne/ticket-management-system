@@ -77,7 +77,7 @@ export const TicketTableDashboard = () => {
           <Table
             className={!darkMode ? classes.table : classes.tableDark}
             size="small"
-            aria-label="a dense table"
+            aria-label="Table for tickets"
           >
             <TableHead>
               <TableRow>

@@ -61,7 +61,7 @@ const dashboardStyles = makeStyles((theme) => ({
 export const Dashboard = () => {
   const classes = dashboardStyles();
 
-  const { darkMode } = useContext(DarkModeContext)
+  const { darkMode } = useContext(DarkModeContext);
 
   const dispatch = useDispatch();
   const { tickets } = useSelector((state) => state.tickets);
@@ -84,7 +84,11 @@ export const Dashboard = () => {
           alignItems="center"
         >
           <Grid item>
-            <Button component={Link} to="/add-ticket" className={!darkMode ? classes.add : classes.addDark}>
+            <Button
+              component={Link}
+              to="/add-ticket"
+              className={!darkMode ? classes.add : classes.addDark}
+            >
               Add New Ticket
             </Button>
           </Grid>
@@ -106,6 +110,17 @@ export const Dashboard = () => {
             <Grid item>
               <TicketTableDashboard />
             </Grid>
+
+  
+
+            <Button
+              component={Link}
+              to="/ticket-list"
+              className={!darkMode ? classes.add : classes.addDark}
+              style = {{margin: "2em"}}
+            >
+               See all tickets
+            </Button>
           </Grid>
         </Grid>
       </div>
